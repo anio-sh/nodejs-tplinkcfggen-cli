@@ -2,7 +2,6 @@ const validateRawACLRule = require("../../src/acl/validateRawACLRule.js")
 const assert = require("assert")
 
 describe("acl:validateRawACLRule", () => {
-
 	it("should throw an error if multiple source ports are specified", () => {
 		assert.throws(() => {
 			validateRawACLRule({
