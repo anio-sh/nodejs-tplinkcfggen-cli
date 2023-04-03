@@ -111,6 +111,21 @@ describe("acl:validateRawACLRule", () => {
 		})
 	})
 
+	it("should throw an error if no logging option was specified", () => {
+		assert.throws(() => {
+			validateRawACLRule({
+				source: "any",
+				destination: "10.0.0.1",
+				protocol: "icmp",
+				acl_id: 100,
+				rule_id: 100,
+				action: "permit"
+			})
+		}, {
+			message: "logging is missing."
+		})
+	})
+
 	it("should not throw if everything is ok", () => {
 		validateRawACLRule({
 			source: "any",
@@ -118,7 +133,8 @@ describe("acl:validateRawACLRule", () => {
 			protocol: "icmp",
 			acl_id: 100,
 			rule_id: 100,
-			action: "permit"
+			action: "permit",
+			logging: true
 		})
 	})
 })

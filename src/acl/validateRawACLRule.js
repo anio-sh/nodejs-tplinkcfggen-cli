@@ -58,5 +58,7 @@ module.exports = function(rule) {
 		throw new Error(`rule_id is missing.`)
 	} else if (!("action" in rule)) {
 		throw new Error(`action is missing.`)
+	} else if (!("logging" in rule)) {
+		throw new Error(`logging is missing.`)
 	}
 }
