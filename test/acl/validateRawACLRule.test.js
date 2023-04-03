@@ -72,7 +72,7 @@ describe("acl:validateRawACLRule", () => {
 		})
 	})
 
-	it("should throw an error if no action was specified", () => {
+	it("should throw an error if no acl_id was specified", () => {
 		assert.throws(() => {
 			validateRawACLRule({
 				source: "any",
@@ -80,7 +80,45 @@ describe("acl:validateRawACLRule", () => {
 				protocol: "icmp"
 			})
 		}, {
+			message: "acl_id is missing."
+		})
+	})
+
+	it("should throw an error if no rule_id was specified", () => {
+		assert.throws(() => {
+			validateRawACLRule({
+				source: "any",
+				destination: "10.0.0.1",
+				protocol: "icmp",
+				acl_id: 100
+			})
+		}, {
+			message: "rule_id is missing."
+		})
+	})
+
+	it("should throw an error if no action was specified", () => {
+		assert.throws(() => {
+			validateRawACLRule({
+				source: "any",
+				destination: "10.0.0.1",
+				protocol: "icmp",
+				acl_id: 100,
+				rule_id: 100
+			})
+		}, {
 			message: "action is missing."
+		})
+	})
+
+	it("should not throw if everything is ok", () => {
+		validateRawACLRule({
+			source: "any",
+			destination: "10.0.0.1",
+			protocol: "icmp",
+			acl_id: 100,
+			rule_id: 100,
+			action: "permit"
 		})
 	})
 })

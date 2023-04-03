@@ -52,7 +52,11 @@ module.exports = function(rule) {
 		}
 	}
 
-	if (!("action" in rule)) {
+	if (!("acl_id" in rule)) {
+		throw new Error(`acl_id is missing.`)
+	} else if (!("rule_id" in rule)) {
+		throw new Error(`rule_id is missing.`)
+	} else if (!("action" in rule)) {
 		throw new Error(`action is missing.`)
 	}
 }
