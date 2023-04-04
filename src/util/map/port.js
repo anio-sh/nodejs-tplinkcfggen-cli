@@ -5,7 +5,8 @@ const known_ports = new IntegerMap({
 	"ssh": 22,
 	"telnet": 23,
 	"dns": 53,
-	"dhcp": [67, 68],
+	"dhcp.server": 67,
+	"dhcp.client": 68,
 	"http": 80,
 	"ntp": 123,
 	"https": 443

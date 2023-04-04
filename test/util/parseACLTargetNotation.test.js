@@ -46,28 +46,6 @@ describe("util:parseACLTargetNotation", () => {
 		)
 	})
 
-	it("should return the correct values for '127.0.0.1/24:ftp,dhcp'", () => {
-		assert.deepStrictEqual(
-			parseACLTargetNotation("127.0.0.1/24:ftp,dhcp"),
-			{
-				"ip": "127.0.0.1",
-				"subnet_mask": "255.255.255.0",
-				"ports": [20,21,67,68]
-			}
-		)
-	})
-
-	it("should return the correct values for '127.0.0.1/24:dhcp'", () => {
-		assert.deepStrictEqual(
-			parseACLTargetNotation("127.0.0.1/24:dhcp"),
-			{
-				"ip": "127.0.0.1",
-				"subnet_mask": "255.255.255.0",
-				"ports": [67,68]
-			}
-		)
-	})
-
 	it("should return the correct values for '127.0.0.1/24:22'", () => {
 		assert.deepStrictEqual(
 			parseACLTargetNotation("127.0.0.1/24:22"),
