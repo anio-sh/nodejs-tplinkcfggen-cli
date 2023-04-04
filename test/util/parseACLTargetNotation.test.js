@@ -1,7 +1,7 @@
 const parseACLTargetNotation = require("../../src/util/parseACLTargetNotation.js")
 const assert = require("assert")
 
-describe("parseACLTargetNotation", () => {
+describe("util:parseACLTargetNotation", () => {
 	it("should return the correct values for '0.0.0.0'", () => {
 		assert.deepStrictEqual(
 			parseACLTargetNotation("0.0.0.0"),

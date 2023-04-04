@@ -1,16 +1,16 @@
-const acl_test_cases = require("./acl_test_cases.js")
+const acl_test_cases = require("./test_cases.js")
 const path = require("path")
 const assert = require("assert")
-const ruleExpander = require("../../src/acl/rule_expander/index.js")
+const ruleExpander = require("../../../src/acl/rule_expander/index.js")
 
 for (const key in acl_test_cases) {
 	const acl_test = acl_test_cases[key]
 
 	const fn = require(
-		path.resolve(__dirname, "..", "..", acl_test.file)
+		path.resolve(__dirname, "..", "..", "..", acl_test.file)
 	)
 
-	describe(key, () => {
+	describe(`acl:${key}`, () => {
 		for (const test_case of acl_test.cases) {
 
 			it(test_case.label, () => {
@@ -32,7 +32,7 @@ for (const key in acl_test_cases) {
 	})
 }
 
-describe("rule_expander", () => {
+describe("acl:rule_expander: ruleExpander", () => {
 	for (const key in acl_test_cases) {
 		const acl_test = acl_test_cases[key]
 
