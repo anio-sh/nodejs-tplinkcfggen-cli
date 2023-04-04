@@ -1,4 +1,7 @@
 {
+  "name": "tp-link-cfg-generator",
+  "version": "0.0.1",
+  "license": "MIT",
   "scripts": {
     "test": "node ./run_test_files.js"
   },
