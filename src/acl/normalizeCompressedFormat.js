@@ -70,6 +70,10 @@ module.exports = function(input) {
 		normalized.protocol = specified_protocols[0]
 	}
 
+	if ("action" in input && input.action === "permit") {
+		normalized.action = "permit"
+	}
+
 	if ("logging" in input) {
 		normalized.logging = !!input.logging
 	} else {
