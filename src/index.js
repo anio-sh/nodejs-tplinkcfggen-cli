@@ -1,11 +1,23 @@
-const normalizeCompressedFormat = require("./acl/normalizeCompressedFormat.js")
-const rule_expander = require("./acl/rule_expander/index.js")
-const convertSingleACLRuleToString = require("./acl/convertSingleACLRuleToString.js")
+const convert_basic = require("./basic/convert.js")
+const convert_vlan = require("./vlan/convert.js")
+const convert_port = require("./port/convert.js")
+const convert_acl = require("./acl/convert.js")
 
 module.exports = function(config) {
-	let rules = config.rules.map(normalizeCompressedFormat)
+	let config_str = ""
 
-	rules = rule_expander(rules)
+	config_str += convert_basic(config)
+	config_str += convert_vlan(config)
+	config_str += convert_port(config)
+	config_str += convert_acl(config)
 
-	console.log(rules)
+	let clean_config = config_str.split("\n").map(line => {
+		if (!line.trim().length) {
+			return "#"
+		}
+
+		return line
+	}).join("\n")
+
+	return `${clean_config}\nend\n\x00`
 }
