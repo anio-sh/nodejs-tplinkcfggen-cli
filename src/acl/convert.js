@@ -1,20 +1,33 @@
 const convertRulesListToString = require("./convertRulesListToString.js")
 const arrayify = require("../util/arrayify.js")
 
-module.exports = function(acl_config) {
+module.exports = function(device_config) {
+	if (!("access_list" in device_config)) {
+		// nothing to do here
+		return ""
+	}
+
 	let parts = []
 
-	parts.push(
-		`access-list create ${acl_config.id} name "${acl_config.name}"`
-	)
+	let current_acl_id = 500
 
-	parts.push(
-		convertRulesListToString(acl_config)
-	)
+	for (const access_list of device_config.access_list) {
+		parts.push(
+			`access-list create ${current_acl_id} name "${access_list.name}"`
+		)
 
-	if ("bind_to" in acl_config) {
-		for (const port of arrayify(acl_config.bind_to)) {
-			parts.push(`access-list bind ${acl_config.id} interface ${port}`)
+		parts.push(
+			// always overwrite acl id (i.e. use current_acl_id)
+			convertRulesListToString({
+				...access_list,
+				id: current_acl_id
+			})
+		)
+
+		if ("bind_to" in access_list) {
+			for (const port of arrayify(access_list.bind_to)) {
+				parts.push(`access-list bind ${current_acl_id} interface ${port}`)
+			}
 		}
 	}
 
