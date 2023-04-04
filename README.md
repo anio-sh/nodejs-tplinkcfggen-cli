@@ -1,4 +1,4 @@
-# tp-link-cfg-generator
+# tp-link-cfg-generator [![Node.js CI](https://github.com/anio-software/tp-link-cfg-generator/actions/workflows/test.yaml/badge.svg)](https://github.com/anio-software/tp-link-cfg-generator/actions/workflows/test.yaml)
 
 ## Introduction
 
