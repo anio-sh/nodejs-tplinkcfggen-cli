@@ -72,6 +72,10 @@ module.exports = function(input) {
 
 	if ("action" in input && input.action === "permit") {
 		normalized.action = "permit"
+	} else {
+		if ("permit" in input) {
+			normalized.action = "permit"
+		}
 	}
 
 	if ("logging" in input) {

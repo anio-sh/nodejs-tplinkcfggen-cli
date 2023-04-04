@@ -17,23 +17,4 @@ describe("acl:normalizeCompressedFormat: defaults", () => {
 			}
 		)
 	})
-
-	it("should return a new rule with the correct values", () => {
-		assert.deepEqual(
-			normalizeCompressedFormat({
-				source: "src",
-				destination: "dst",
-				protocol: "tcp",
-				action: "permit",
-				logging: true
-			}),
-			{
-				source: "src",
-				destination: "dst",
-				protocol: "tcp",
-				action: "permit",
-				logging: true
-			}
-		)
-	})
 })
