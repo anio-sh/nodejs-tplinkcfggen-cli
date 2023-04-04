@@ -29,6 +29,8 @@ module.exports = function(device_config) {
 				parts.push(`access-list bind ${current_acl_id} interface ${port}`)
 			}
 		}
+
+		current_acl_id += 10
 	}
 
 	return parts.join("\n")
