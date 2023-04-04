@@ -13,11 +13,18 @@ const isNumericString = require("./isNumericString.js")
 const {mapPortNameToInteger} = require("./map/port.js")
 
 function parseIPWithSlashNotation(ip_addr_str) {
-	let ip = ip_addr_str
-	let subnet_mask = "255.255.255.255"
+	const is_any_ip_addr = ip_addr_str.slice(0, 3) === "any"
+
+	let ip = is_any_ip_addr ? "0.0.0.0" : ip_addr_str
+	let subnet_mask = is_any_ip_addr ? "0.0.0.0" : "255.255.255.255"
 
 	// check for slash "/" notation
 	if (ip_addr_str.indexOf("/") >= 0) {
+		// throw error if ip starts with "any"
+		if (is_any_ip_addr) {
+			throw new Error(`Cannot specify subnet mask for 'any' ip address.`)
+		}
+
 		let tmp = ip_addr_str.split("/")
 
 		ip = tmp[0]
@@ -57,11 +64,6 @@ module.exports = function(ip_addr_str) {
 		let tmp = ip_addr_str.split(":")
 
 		ip_with_possible_slash_notation = tmp[0]
-
-		// ip could still be "any" at this point
-		if (ip_with_possible_slash_notation === "any") {
-			ip_with_possible_slash_notation = "0.0.0.0"
-		}
 
 		// ports could be "any", handle this case here
 		if (tmp[1] === "any") {
