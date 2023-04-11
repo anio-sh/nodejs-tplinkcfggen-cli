@@ -1,5 +1,6 @@
 const parseACLTargetNotation = require("../util/parseACLTargetNotation.js")
 const {mapProtocolNameToInteger} = require("../util/map/protocol.js")
+const validateSingleACLRule = require("./validateSingleACLRule.js")
 
 module.exports = function(context, normalized_rule) {
 	let parts = []
@@ -16,6 +17,13 @@ module.exports = function(context, normalized_rule) {
 
 	const source = parseACLTargetNotation(normalized_rule.source)
 	const destination = parseACLTargetNotation(normalized_rule.destination)
+
+	validateSingleACLRule({
+		context,
+		normalized_rule,
+		source,
+		destination
+	})
 
 	// add source ip (if source ip isn't "any")
 	if (!(source.ip === "0.0.0.0" && source.subnet_mask === "0.0.0.0")) {
