@@ -2,6 +2,7 @@ const convert_basic = require("./basic/convert.js")
 const convert_vlan = require("./vlan/convert.js")
 const convert_port = require("./port/convert.js")
 const convert_acl = require("./acl/convert.js")
+const arrayify = require("./util/arrayify.js")
 
 module.exports = function(config) {
 	let config_str = ""
@@ -11,7 +12,20 @@ module.exports = function(config) {
 	config_str += convert_port(config)
 	config_str += convert_acl(config)
 
-	let clean_config = config_str.split("\n").map(line => {
+	let config_lines = config_str.split("\n")
+
+	// append configuration lines from config (if specified)
+	if ("appended_configuration_lines" in config) {
+		config_lines.push("")
+
+		for (const line of arrayify(config.appended_configuration_lines)) {
+			config_lines.push(line)
+		}
+
+		config_lines.push("")
+	}
+
+	let clean_config = config_lines.map(line => {
 		if (!line.trim().length) {
 			return "#"
 		}
