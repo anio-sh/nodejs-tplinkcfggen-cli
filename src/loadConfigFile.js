@@ -7,7 +7,9 @@ module.exports = function(config_file_path) {
 		udp: "udp",
 		deny: "deny",
 		permit: "permit",
-		any: "any"
+		any: "any",
+		console,
+		process
 	}
 
 	const config = SandboxedModule.require(path.resolve(config_file_path), {
