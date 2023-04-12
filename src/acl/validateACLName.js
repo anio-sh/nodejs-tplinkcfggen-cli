@@ -1,0 +1,29 @@
+let allowed_characters = [
+	"0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
+	".", "/", "-", "_", "@", " "
+]
+
+for (let i = 65; i <= 90; ++i) {
+	allowed_characters.push(String.fromCharCode(i))
+}
+
+for (let i = 97; i <= 122; ++i) {
+	allowed_characters.push(String.fromCharCode(i))
+}
+
+module.exports = function(name) {
+	const error_str = `UserInputError: The ACL name is invalid, only characters 0-9, a-z, A-Z, ./-_@: and blank space are allowed, and the length should be 1-32.`
+
+	//only characters 0-9, a-z, A-Z, ./-_@: and blank space are allowed
+	// and the length should be 1-32.
+
+	if (name.length > 32 || !name.trim().length) {
+		throw new Error(error_str)
+	}
+
+	for (const char of name) {
+		if (!allowed_characters.includes(char)) {
+			throw new Error(`${error_str}\nOffending character is '${char}' in '${name}'.`)
+		}
+	}
+}

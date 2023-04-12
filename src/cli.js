@@ -22,8 +22,18 @@ try {
 	process.exit(2)
 }
 
-process.stdout.write(
-	tpLinkConfigGenerator(
-		loadConfigFile(input_config_file)
+try {
+	process.stdout.write(
+		tpLinkConfigGenerator(
+			loadConfigFile(input_config_file)
+		)
 	)
-)
+} catch (error) {
+	if (error.message.startsWith("UserInputError:")) {
+		process.stderr.write(error.message + "\n\n")
+
+		process.exit(2)
+	}
+
+	throw error
+}

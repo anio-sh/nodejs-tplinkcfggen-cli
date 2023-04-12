@@ -1,5 +1,6 @@
 const convertRulesListToString = require("./convertRulesListToString.js")
 const arrayify = require("../util/arrayify.js")
+const validateACLName = require("./validateACLName.js")
 
 module.exports = function(device_config) {
 	if (!("access_list" in device_config)) {
@@ -12,6 +13,8 @@ module.exports = function(device_config) {
 	let current_acl_id = 500
 
 	for (const access_list of device_config.access_list) {
+		validateACLName(access_list.name)
+
 		parts.push(
 			`access-list create ${current_acl_id} name "${access_list.name}"`
 		)
