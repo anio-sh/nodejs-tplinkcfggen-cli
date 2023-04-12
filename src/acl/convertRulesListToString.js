@@ -4,6 +4,7 @@ const convertSingleACLRuleToString = require("./convertSingleACLRuleToString.js"
 
 module.exports = function(acl) {
 	let parts = []
+	let n_rules = 0
 	let rules = acl.rules.map(normalizeCompressedFormat)
 
 	rules = rule_expander(rules)
@@ -18,8 +19,12 @@ module.exports = function(acl) {
 			}, rule)
 		)
 
-		rule_id += 10
+		rule_id += 10;
+		n_rules++;
 	}
 
-	return parts.join("\n")
+	return {
+		string: parts.join("\n"),
+		n_rules
+	}
 }
