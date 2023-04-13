@@ -1,4 +1,6 @@
 const isString = require("../util/isString.js")
+const compressIntoRanges = require("../util/compressIntoRanges.js")
+const uncompressRanges = require("../util/uncompressRanges.js")
 
 module.exports = function(device_config) {
 	if (!("port" in device_config)) {
@@ -36,9 +38,16 @@ module.exports = function(device_config) {
 		const mode = Array.isArray(port_info.vlan) ? "trunk" : "access"
 
 		if (mode === "trunk") {
-			const vlan_ids = port_info.vlan.map(vlanNameToID).join(",")
+			const vlan_ids = port_info.vlan.map(vlanNameToID)
 
-			str += `  switchport general allowed vlan ${vlan_ids} tagged\n`
+			const vlan_ids_compressed = compressIntoRanges(vlan_ids)
+			const vlan_ids_uncompressed = uncompressRanges(vlan_ids_compressed)
+
+			if (JSON.stringify(vlan_ids_uncompressed) !== JSON.stringify(vlan_ids)) {
+				throw new Error(`Compressed range does not equal the original range (internal error).`)
+			}
+
+			str += `  switchport general allowed vlan ${vlan_ids_compressed} tagged\n`
 
 			if (!("pvid" in port_info)) {
 				throw new Error(`pvid required for trunk ports.`)
