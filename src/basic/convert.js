@@ -21,6 +21,7 @@ module.exports = function(device_config) {
 	str += `#\n`.repeat(10)
 	str += `no snmp-server\n`
 	str += `no controller cloud-based\n`
+	str += `ip ssh server\n`
 	str += `#\n`.repeat(10)
 
 	return str
