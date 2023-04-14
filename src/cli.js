@@ -5,7 +5,7 @@ const tpLinkConfigGenerator = require("./index.js")
 
 if (process.argv.length !== 3) {
 	process.stderr.write(
-		`tp-link-cfg-gen <input-config.json>\n`
+		`Usage: tp-link-cfg-gen <config.js>\n`
 	)
 
 	process.exit(2)
