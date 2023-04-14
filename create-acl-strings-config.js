@@ -5,6 +5,7 @@ let rule_id = 1
 for (const test_case of test_cases) {
 
 	for (const test of test_case.tests) {
+		if (!("output" in test)) continue
 
 		let expected_output = test.output
 
