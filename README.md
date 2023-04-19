@@ -1,4 +1,4 @@
-# tp-config-generator
+# tp-config-generator [![Node.js CI](https://github.com/anio-software/tp-config-generator/actions/workflows/test.yaml/badge.svg)](https://github.com/anio-software/tp-config-generator/actions/workflows/test.yaml)
 
 ## Introduction
 
