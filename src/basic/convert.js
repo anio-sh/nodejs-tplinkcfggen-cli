@@ -3,7 +3,7 @@ const validateLocationName = require("./validateLocationName.js")
 module.exports = function(device_config) {
 	validateLocationName(device_config.location)
 
-	let str = `!TL-SG3210\n`
+	let str = ``
 
 	str += `#\n`
 	str += `hostname \"${device_config.hostname}\"\n`

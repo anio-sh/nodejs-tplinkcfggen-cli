@@ -14,6 +14,13 @@ module.exports = function(config) {
 
 	let config_lines = config_str.split("\n")
 
+	// prepend configuration lines from config (if specified)
+	if ("prepended_configuration_lines" in config) {
+		for (const line of arrayify(config.prepended_configuration_lines).reverse()) {
+			config_lines.unshift(line)
+		}
+	}
+
 	// append configuration lines from config (if specified)
 	if ("appended_configuration_lines" in config) {
 		config_lines.push("")
