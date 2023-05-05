@@ -32,7 +32,7 @@ module.exports = function(device_config) {
 			}
 		}
 
-		printDiagnosticMessage(`create acl with id='${current_acl_id}', name='${access_list.name}' and with ${n_rules} rules`)
+		//printDiagnosticMessage(`create acl with id='${current_acl_id}', name='${access_list.name}' and with ${n_rules} rules`)
 
 		current_acl_id += 10
 	}
