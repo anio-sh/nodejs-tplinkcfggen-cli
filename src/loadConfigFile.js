@@ -6,7 +6,7 @@ const {
 	IPv4StringToUInt32,
 	parseIPv4String
 } = require("@anio-software/network-utils")
-console.log("load laoded")
+
 module.exports = function(config_file_path) {
 	const context = {
 		tcp: "tcp",
