@@ -1,6 +1,6 @@
 {
   "name": "@anio-software/tp-config-generator",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "license": "MIT",
   "scripts": {
     "test": "node ./run_test_files.js"
