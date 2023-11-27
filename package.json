@@ -4,7 +4,6 @@
   },
   "dependencies": {
     "@anio-sh/network-utils": "^0.0.1",
-    "@anio-software/network-utils": "0.0.1",
-    "sandboxed-module": "^2.0.4"
+    "@anio-software/network-utils": "0.0.1"
   }
 }
