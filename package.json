@@ -1,5 +1,5 @@
 {
-  "name": "@anio-software/tp-config-generator",
+  "name": "@anio-software/tplinkcfggen",
   "version": "0.0.5",
   "license": "MIT",
   "scripts": {
