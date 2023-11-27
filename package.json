@@ -1,7 +1,7 @@
 {
   "devDependencies": {
     "@anio-sh/bundler": "^0.1.0",
-    "@anio-sh/runmocha": "^0.0.1"
+    "@anio-sh/runmocha": "^0.0.2"
   },
   "dependencies": {
     "@anio-sh/network-utils": "^0.0.1"
