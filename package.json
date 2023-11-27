@@ -1,10 +1,4 @@
 {
-  "name": "@anio-software/tplinkcfggen",
-  "version": "0.0.5",
-  "license": "MIT",
-  "scripts": {
-    "test": "node ./run_test_files.mjs"
-  },
   "devDependencies": {
     "mocha": "^10.2.0"
   },
