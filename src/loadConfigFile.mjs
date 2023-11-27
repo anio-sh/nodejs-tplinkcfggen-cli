@@ -5,7 +5,7 @@ import {
 	UInt32ToIPv4String,
 	IPv4StringToUInt32,
 	parseIPv4String
-} from "@anio-software/network-utils"
+} from "@anio-sh/network-utils"
 
 export default function(config_file_path) {
 	const context = {
