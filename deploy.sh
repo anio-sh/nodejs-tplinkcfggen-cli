@@ -11,5 +11,5 @@ curl \
 	--data-binary "@./dist/tpcfggen.mjs" \
 	-H "Content-Type:application/octet-stream" \
 	-H "x-anio-auth-key: $ANIO_DEPLOY_KEY" \
-	-H "x-anio-file-name: tpcfggen" \
+	-H "x-anio-file-name: tplinkcfggen" \
 	https://anio.sh/upload
