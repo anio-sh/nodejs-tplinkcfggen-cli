@@ -26,7 +26,7 @@ try {
 try {
 	process.stdout.write(
 		tpLinkConfigGenerator(
-			loadConfigFile(input_config_file)
+			await loadConfigFile(input_config_file)
 		)
 	)
 } catch (error) {

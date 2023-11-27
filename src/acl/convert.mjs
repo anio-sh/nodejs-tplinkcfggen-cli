@@ -1,5 +1,5 @@
 import convertRulesListToString from "./convertRulesListToString.mjs"
-import arrayify = from "../util/arrayify.mjs"
+import arrayify from "../util/arrayify.mjs"
 import validateACLName from "./validateACLName.mjs"
 import printDiagnosticMessage from "../util/printDiagnosticMessage.mjs"
 

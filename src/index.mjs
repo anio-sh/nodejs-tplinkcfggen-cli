@@ -1,6 +1,7 @@
 import convert_basic from "./basic/convert.mjs"
 import convert_vlan from "./vlan/convert.mjs"
 import convert_port from "./port/convert.mjs"
+import convert_acl from "./acl/convert.mjs"
 import arrayify from "./util/arrayify.mjs"
 
 export default function(config) {
