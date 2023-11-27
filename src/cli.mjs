@@ -1,4 +1,4 @@
-#!/usr/bin/env node --experimental-detect-module
+#!/usr/bin/env -S node --experimental-detect-module
 import fs from "node:fs"
 import loadConfigFile from "./loadConfigFile.mjs"
 import process from "node:process"
