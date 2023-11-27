@@ -6,7 +6,7 @@ import tpLinkConfigGenerator from "./index.mjs"
 
 if (process.argv.length !== 3) {
 	process.stderr.write(
-		`Usage: anio_tplinkcfggen <config.js>\n`
+		`Usage: anio_tplinkcfggen <config.mjs>\n`
 	)
 
 	process.exit(2)
