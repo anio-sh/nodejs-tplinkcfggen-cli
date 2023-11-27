@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "@anio-sh/bundler": "^0.1.0",
     "mocha": "^10.2.0"
   },
   "dependencies": {
