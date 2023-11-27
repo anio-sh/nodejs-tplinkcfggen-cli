@@ -4,7 +4,6 @@
     "mocha": "^10.2.0"
   },
   "dependencies": {
-    "@anio-sh/network-utils": "^0.0.1",
-    "@anio-software/network-utils": "0.0.1"
+    "@anio-sh/network-utils": "^0.0.1"
   }
 }
