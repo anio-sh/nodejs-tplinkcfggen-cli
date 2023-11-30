@@ -5,7 +5,7 @@ import {
 	UInt32ToIPv4String,
 	IPv4StringToUInt32,
 	parseIPv4String
-} from "@anio-sh/network-utils"
+} from "@anio-core-sh/js-utils"
 
 let saved_global_context = {}
 
