@@ -1,4 +1,5 @@
 {
+  "version": "0.0.1",
   "devDependencies": {
     "@anio-sh/bundler": "^0.3.0",
     "@anio-sh/runmocha": "^0.0.2"
