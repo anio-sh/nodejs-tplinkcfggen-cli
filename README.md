@@ -1,4 +1,4 @@
-# @anio-sh/tplinkcfggen [![Node.js CI](https://github.com/anio-sh/nodejs-tplinkcfggen-cli/actions/workflows/test.yaml/badge.svg)](https://github.com/anio-sh/nodejs-tplinkcfggen-cli/actions/workflows/test.yaml)
+# @anio-sh/tplinkcfggen [![CI/CD](https://github.com/anio-sh/nodejs-tplinkcfggen-cli/actions/workflows/cicd.yaml/badge.svg?branch=main)](https://github.com/anio-sh/nodejs-tplinkcfggen-cli/actions/workflows/cicd.yaml)
 
 ## Introduction
 
