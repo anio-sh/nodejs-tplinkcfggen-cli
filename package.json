@@ -2,8 +2,6 @@
   "version": "0.0.2",
   "private": true,
   "devDependencies": {
-    "@anio-sh/bundler": "^1.0.0",
-    "@anio-sh/runmocha": "^0.0.4"
   },
   "dependencies": {
     "@anio-core-sh/js-utils": "^0.2.1"
