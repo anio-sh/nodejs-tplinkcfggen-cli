@@ -1,8 +1,11 @@
+import {createTestSuite} from "@anio-jtest/test"
+const {test, describe, suite} = createTestSuite(import.meta.url)
+
 import normalizeCompressedFormat from "../../../src/acl/normalizeCompressedFormat.mjs"
 import assert from "assert"
 
 describe("acl:normalizeCompressedFormat: protocol", () => {
-	it("should return a new rule with the correct protocol (1)", () => {
+	test("should return a new rule with the correct protocol (1)", () => {
 		assert.deepEqual(
 			normalizeCompressedFormat({
 				source: "src",
@@ -18,7 +21,7 @@ describe("acl:normalizeCompressedFormat: protocol", () => {
 		)
 	})
 
-	it("should return a new rule with the correct protocol (2)", () => {
+	test("should return a new rule with the correct protocol (2)", () => {
 		assert.deepEqual(
 			normalizeCompressedFormat({
 				source: "src",
@@ -35,7 +38,7 @@ describe("acl:normalizeCompressedFormat: protocol", () => {
 		)
 	})
 
-	it("should return a new rule with the correct protocol (3)", () => {
+	test("should return a new rule with the correct protocol (3)", () => {
 		assert.deepEqual(
 			normalizeCompressedFormat({
 				source: "src",
@@ -52,7 +55,7 @@ describe("acl:normalizeCompressedFormat: protocol", () => {
 		)
 	})
 
-	it("should return the correct rule when 'tcp' is specified", () => {
+	test("should return the correct rule when 'tcp' is specified", () => {
 		assert.deepEqual(
 			normalizeCompressedFormat({
 				source: "src",
@@ -69,7 +72,7 @@ describe("acl:normalizeCompressedFormat: protocol", () => {
 		)
 	})
 
-	it("should return the correct rule when 'tcp' and 'udp' are specified at the same time", () => {
+	test("should return the correct rule when 'tcp' and 'udp' are specified at the same time", () => {
 		assert.deepEqual(
 			normalizeCompressedFormat({
 				source: "src",
@@ -87,3 +90,5 @@ describe("acl:normalizeCompressedFormat: protocol", () => {
 		)
 	})
 })
+
+export default suite

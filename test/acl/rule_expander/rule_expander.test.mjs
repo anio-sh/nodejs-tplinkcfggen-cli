@@ -1,3 +1,6 @@
+import {createTestSuite} from "@anio-jtest/test"
+const {test, describe, suite} = createTestSuite(import.meta.url)
+
 import acl_test_cases from "./test_cases.mjs"
 import path from "path"
 import assert from "assert"
@@ -19,7 +22,7 @@ for (const key in acl_test_cases) {
 	describe(`acl:${key}`, () => {
 		for (const test_case of acl_test.cases) {
 
-			it(test_case.label, () => {
+			test(test_case.label, () => {
 				if ("output" in test_case) {
 					assert.deepEqual(
 						fn(test_case.input), test_case.output
@@ -44,7 +47,7 @@ describe("acl:rule_expander: ruleExpander", () => {
 
 		for (const test_case of acl_test.cases) {
 
-			it(`cross check '${test_case.label}'`, () => {
+			test(`cross check '${test_case.label}'`, () => {
 
 				if ("output" in test_case) {
 					assert.deepEqual(
@@ -65,3 +68,5 @@ describe("acl:rule_expander: ruleExpander", () => {
 		}
 	}
 })
+
+export default suite

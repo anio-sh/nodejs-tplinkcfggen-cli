@@ -1,8 +1,11 @@
+import {createTestSuite} from "@anio-jtest/test"
+const {test, describe, suite} = createTestSuite(import.meta.url)
+
 import normalizeCompressedFormat from "../../../src/acl/normalizeCompressedFormat.mjs"
 import assert from "assert"
 
 describe("acl:normalizeCompressedFormat: action_deny_permit", () => {
-	it("should throw an error if 'deny' is specified along side with 'action'", () => {
+	test("should throw an error if 'deny' is specified along side with 'action'", () => {
 		assert.throws(() => {
 			normalizeCompressedFormat({
 				source: "", destination: "",
@@ -14,7 +17,7 @@ describe("acl:normalizeCompressedFormat: action_deny_permit", () => {
 		})
 	})
 
-	it("should throw an error if 'permit' is specified along side with 'action'", () => {
+	test("should throw an error if 'permit' is specified along side with 'action'", () => {
 		assert.throws(() => {
 			normalizeCompressedFormat({
 				source: "", destination: "",
@@ -26,7 +29,7 @@ describe("acl:normalizeCompressedFormat: action_deny_permit", () => {
 		})
 	})
 
-	it("should throw an error if 'deny' and 'permit' are specified along side with 'action'", () => {
+	test("should throw an error if 'deny' and 'permit' are specified along side with 'action'", () => {
 		assert.throws(() => {
 			normalizeCompressedFormat({
 				source: "", destination: "",
@@ -37,7 +40,7 @@ describe("acl:normalizeCompressedFormat: action_deny_permit", () => {
 		})
 	})
 
-	it("should throw an error if 'deny' and 'permit' are specified at the same time", () => {
+	test("should throw an error if 'deny' and 'permit' are specified at the same time", () => {
 		assert.throws(() => {
 			normalizeCompressedFormat({
 				source: "", destination: "",
@@ -49,3 +52,5 @@ describe("acl:normalizeCompressedFormat: action_deny_permit", () => {
 		})
 	})
 })
+
+export default suite

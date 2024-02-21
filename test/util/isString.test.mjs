@@ -1,8 +1,11 @@
+import {createTestSuite} from "@anio-jtest/test"
+const {test, describe, suite} = createTestSuite(import.meta.url)
+
 import isString from "../../src/util/isString.mjs"
 import assert from "assert"
 
 describe("util:isString", function() {
-	it("should work as expected", () => {
+	test("should work as expected", () => {
 		assert.deepEqual(isString(""), true)
 		assert.deepEqual(isString("123"), true)
 		assert.deepEqual(isString(1), false)
@@ -10,3 +13,5 @@ describe("util:isString", function() {
 		assert.deepEqual(isString({}), false)
 	})
 })
+
+export default suite

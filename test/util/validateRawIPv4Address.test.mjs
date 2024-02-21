@@ -1,15 +1,18 @@
+import {createTestSuite} from "@anio-jtest/test"
+const {test, describe, suite} = createTestSuite(import.meta.url)
+
 import validateRawIPv4Address from "../../src/util/validateRawIPv4Address.mjs"
 import assert from "assert"
 
 describe("util:validateRawIPv4Address", function() {
-	it("should not throw for valid IPv4 addresses", () => {
+	test("should not throw for valid IPv4 addresses", () => {
 		validateRawIPv4Address("1.2.3.4")
 		validateRawIPv4Address("255.255.255.255")
 		validateRawIPv4Address("0.0.0.0")
 		validateRawIPv4Address("10.0.0.1")
 	})
 
-	it("should throw for invalid IPv4 addresses", () => {
+	test("should throw for invalid IPv4 addresses", () => {
 		assert.throws(() => {
 			validateRawIPv4Address("1.2.3")
 		}, {
@@ -41,3 +44,5 @@ describe("util:validateRawIPv4Address", function() {
 		})
 	})
 })
+
+export default suite

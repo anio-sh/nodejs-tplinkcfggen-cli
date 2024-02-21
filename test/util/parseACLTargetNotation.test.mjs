@@ -1,8 +1,11 @@
+import {createTestSuite} from "@anio-jtest/test"
+const {test, describe, suite} = createTestSuite(import.meta.url)
+
 import parseACLTargetNotation from "../../src/util/parseACLTargetNotation.mjs"
 import assert from "assert"
 
 describe("util:parseACLTargetNotation", () => {
-	it("should return the correct values for '0.0.0.0'", () => {
+	test("should return the correct values for '0.0.0.0'", () => {
 		assert.deepStrictEqual(
 			parseACLTargetNotation("0.0.0.0"),
 			{
@@ -13,7 +16,7 @@ describe("util:parseACLTargetNotation", () => {
 		)
 	})
 
-	it("should return the correct values for '0.0.0.0:any'", () => {
+	test("should return the correct values for '0.0.0.0:any'", () => {
 		assert.deepStrictEqual(
 			parseACLTargetNotation("0.0.0.0:any"),
 			{
@@ -24,7 +27,7 @@ describe("util:parseACLTargetNotation", () => {
 		)
 	})
 
-	it("should return the correct values for '127.0.0.1/24'", () => {
+	test("should return the correct values for '127.0.0.1/24'", () => {
 		assert.deepStrictEqual(
 			parseACLTargetNotation("127.0.0.1/24"),
 			{
@@ -35,7 +38,7 @@ describe("util:parseACLTargetNotation", () => {
 		)
 	})
 
-	it("should return the correct values for '127.0.0.1/24:ftp'", () => {
+	test("should return the correct values for '127.0.0.1/24:ftp'", () => {
 		assert.deepStrictEqual(
 			parseACLTargetNotation("127.0.0.1/24:ftp"),
 			{
@@ -46,7 +49,7 @@ describe("util:parseACLTargetNotation", () => {
 		)
 	})
 
-	it("should return the correct values for '127.0.0.1/24:22'", () => {
+	test("should return the correct values for '127.0.0.1/24:22'", () => {
 		assert.deepStrictEqual(
 			parseACLTargetNotation("127.0.0.1/24:22"),
 			{
@@ -57,7 +60,7 @@ describe("util:parseACLTargetNotation", () => {
 		)
 	})
 
-	it("should return the correct values for '127.0.0.1/24:ssh,http'", () => {
+	test("should return the correct values for '127.0.0.1/24:ssh,http'", () => {
 		assert.deepStrictEqual(
 			parseACLTargetNotation("127.0.0.1/24:ssh,http"),
 			{
@@ -70,7 +73,7 @@ describe("util:parseACLTargetNotation", () => {
 })
 
 describe("parseACLTargetNotation any test cases", () => {
-	it("should return the correct values for 'any'", () => {
+	test("should return the correct values for 'any'", () => {
 		assert.deepStrictEqual(
 			parseACLTargetNotation("any"),
 			{
@@ -81,7 +84,7 @@ describe("parseACLTargetNotation any test cases", () => {
 		)
 	})
 
-	it("should return the correct values for 'any:any'", () => {
+	test("should return the correct values for 'any:any'", () => {
 		assert.deepStrictEqual(
 			parseACLTargetNotation("any:any"),
 			{
@@ -92,7 +95,7 @@ describe("parseACLTargetNotation any test cases", () => {
 		)
 	})
 
-	it("should return the correct values for 'any:ssh'", () => {
+	test("should return the correct values for 'any:ssh'", () => {
 		assert.deepStrictEqual(
 			parseACLTargetNotation("any:ssh"),
 			{
@@ -103,7 +106,7 @@ describe("parseACLTargetNotation any test cases", () => {
 		)
 	})
 
-	it("should return the correct values for 'any:ssh,http'", () => {
+	test("should return the correct values for 'any:ssh,http'", () => {
 		assert.deepStrictEqual(
 			parseACLTargetNotation("any:ssh,http"),
 			{
@@ -114,7 +117,7 @@ describe("parseACLTargetNotation any test cases", () => {
 		)
 	})
 
-	it("should throw an error if 'any' is specified with a subnet mask (1)", () => {
+	test("should throw an error if 'any' is specified with a subnet mask (1)", () => {
 		assert.throws(() => {
 			parseACLTargetNotation("any/32")
 		}, {
@@ -122,7 +125,7 @@ describe("parseACLTargetNotation any test cases", () => {
 		})
 	})
 
-	it("should throw an error if 'any' is specified with a subnet mask (2)", () => {
+	test("should throw an error if 'any' is specified with a subnet mask (2)", () => {
 		assert.throws(() => {
 			parseACLTargetNotation("any/32:any")
 		}, {
@@ -130,7 +133,7 @@ describe("parseACLTargetNotation any test cases", () => {
 		})
 	})
 
-	it("should throw an error if 'any' is specified with a subnet mask (3)", () => {
+	test("should throw an error if 'any' is specified with a subnet mask (3)", () => {
 		assert.throws(() => {
 			parseACLTargetNotation("any/32:ssh")
 		}, {
@@ -138,3 +141,5 @@ describe("parseACLTargetNotation any test cases", () => {
 		})
 	})
 })
+
+export default suite

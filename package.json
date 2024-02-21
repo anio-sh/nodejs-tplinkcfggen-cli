@@ -2,6 +2,7 @@
   "version": "0.0.2",
   "private": true,
   "devDependencies": {
+    "@anio-jtest/test": "^0.15.0"
   },
   "dependencies": {
     "@anio-core-sh/js-utils": "^0.2.1"

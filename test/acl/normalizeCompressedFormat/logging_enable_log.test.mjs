@@ -1,8 +1,11 @@
+import {createTestSuite} from "@anio-jtest/test"
+const {test, describe, suite} = createTestSuite(import.meta.url)
+
 import normalizeCompressedFormat from "../../../src/acl/normalizeCompressedFormat.mjs"
 import assert from "assert"
 
 describe("acl:normalizeCompressedFormat: logging_enable_log", () => {
-	it("should throw an error if 'enable_log' is specified along side with 'logging'", () => {
+	test("should throw an error if 'enable_log' is specified along side with 'logging'", () => {
 		assert.throws(() => {
 			normalizeCompressedFormat({
 				source: "", destination: "",
@@ -14,7 +17,7 @@ describe("acl:normalizeCompressedFormat: logging_enable_log", () => {
 		})
 	})
 
-	it("should throw an error if 'disable_log' is specified along side with 'logging'", () => {
+	test("should throw an error if 'disable_log' is specified along side with 'logging'", () => {
 		assert.throws(() => {
 			normalizeCompressedFormat({
 				source: "", destination: "",
@@ -26,7 +29,7 @@ describe("acl:normalizeCompressedFormat: logging_enable_log", () => {
 		})
 	})
 
-	it("should throw an error if 'enable_log' and 'disable_log' are specified along side with 'logging'", () => {
+	test("should throw an error if 'enable_log' and 'disable_log' are specified along side with 'logging'", () => {
 		assert.throws(() => {
 			normalizeCompressedFormat({
 				source: "", destination: "",
@@ -37,7 +40,7 @@ describe("acl:normalizeCompressedFormat: logging_enable_log", () => {
 		})
 	})
 
-	it("should throw an error if 'enable_log' and 'disable_log' are specified at the same time", () => {
+	test("should throw an error if 'enable_log' and 'disable_log' are specified at the same time", () => {
 		assert.throws(() => {
 			normalizeCompressedFormat({
 				source: "", destination: "",
@@ -49,3 +52,5 @@ describe("acl:normalizeCompressedFormat: logging_enable_log", () => {
 		})
 	})
 })
+
+export default suite

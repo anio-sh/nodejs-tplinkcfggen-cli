@@ -1,3 +1,7 @@
+import {createTestSuite} from "@anio-jtest/test"
+const {test, describe, suite} = createTestSuite(import.meta.url)
+const it = test
+
 import convertSingleACLRuleToString from "../../../src/acl/convertSingleACLRuleToString.mjs"
 import assert from "assert"
 import test_cases from "./test_cases.mjs"
@@ -23,3 +27,5 @@ for (const test_case of test_cases) {
 		}
 	})
 }
+
+export default suite

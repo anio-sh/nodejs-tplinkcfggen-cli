@@ -1,8 +1,11 @@
+import {createTestSuite} from "@anio-jtest/test"
+const {test, describe, suite} = createTestSuite(import.meta.url)
+
 import normalizeCompressedFormat from "../../../src/acl/normalizeCompressedFormat.mjs"
 import assert from "assert"
 
 describe("acl:normalizeCompressedFormat: protocol_tcp_udp", () => {
-	it("should throw an error if 'tcp' is specified along side with 'protocol'", () => {
+	test("should throw an error if 'tcp' is specified along side with 'protocol'", () => {
 		assert.throws(() => {
 			normalizeCompressedFormat({
 				source: "", destination: "",
@@ -14,7 +17,7 @@ describe("acl:normalizeCompressedFormat: protocol_tcp_udp", () => {
 		})
 	})
 
-	it("should throw an error if 'udp' is specified along side with 'protocol'", () => {
+	test("should throw an error if 'udp' is specified along side with 'protocol'", () => {
 		assert.throws(() => {
 			normalizeCompressedFormat({
 				source: "", destination: "",
@@ -26,7 +29,7 @@ describe("acl:normalizeCompressedFormat: protocol_tcp_udp", () => {
 		})
 	})
 
-	it("should throw an error if 'udp' and 'tcp' are specified along side with 'protocol'", () => {
+	test("should throw an error if 'udp' and 'tcp' are specified along side with 'protocol'", () => {
 		assert.throws(() => {
 			normalizeCompressedFormat({
 				source: "", destination: "",
@@ -37,3 +40,5 @@ describe("acl:normalizeCompressedFormat: protocol_tcp_udp", () => {
 		})
 	})
 })
+
+export default suite
