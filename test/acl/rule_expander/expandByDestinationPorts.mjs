@@ -1,5 +1,5 @@
 export default {
-	file: "./src/acl/rule_expander/byDestinationPorts.mjs",
+	implementation: "byDestinationPorts",
 
 	cases: [{
 		label: "should expand destination with multiple ports correctly",

@@ -1,5 +1,5 @@
 export default {
-	file: "./src/acl/rule_expander/bySourceAndDestination.mjs",
+	implementation: "bySourceAndDestination",
 
 	cases: [{
 		label: "should expand one-to-one relationship correctly",

@@ -2,21 +2,18 @@ import {createTestSuite} from "@anio-jtest/test"
 const {test, describe, suite} = createTestSuite(import.meta.url)
 
 import acl_test_cases from "./test_cases.mjs"
-import path from "path"
 import ruleExpander from "../../../src/acl/rule_expander/index.mjs"
-import {fileURLToPath} from "url"
 
-const __dirname = path.dirname(
-	fileURLToPath(import.meta.url)
-)
+import byDestinationPorts from "../../../src/acl/rule_expander/byDestinationPorts.mjs"
+import byProtocol from "../../../src/acl/rule_expander/byProtocol.mjs"
+import bySourceAndDestination from "../../../src/acl/rule_expander/bySourceAndDestination.mjs"
+
+const implementations = {byDestinationPorts, byProtocol, bySourceAndDestination}
 
 for (const key in acl_test_cases) {
 	const acl_test = acl_test_cases[key]
 
-	const fn = (await import(
-		path.resolve(__dirname, "..", "..", "..", acl_test.file)
-	)).default
-
+	const fn = implementations[acl_test.implementation]
 
 	describe(`acl:${key}`, () => {
 		for (const test_case of acl_test.cases) {

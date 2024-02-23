@@ -1,5 +1,5 @@
 export default {
-	file: "./src/acl/rule_expander/byProtocol.mjs",
+	implementation: "byProtocol",
 
 	cases: [{
 		label: "should expand properly given multiple protocols",
