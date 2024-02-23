@@ -3,7 +3,7 @@
   "private": true,
   "devDependencies": {
     "@anio-jtest/test": "^0.17.2",
-    "anio-jtest": "^0.1.1"
+    "anio-gyp": "^0.11.0"
   },
   "dependencies": {
     "@anio-core-sh/js-utils": "^0.2.1"
