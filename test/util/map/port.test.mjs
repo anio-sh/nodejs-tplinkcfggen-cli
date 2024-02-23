@@ -2,55 +2,40 @@ import {createTestSuite} from "@anio-jtest/test"
 const {test, describe, suite} = createTestSuite(import.meta.url)
 
 import {mapPortNameToInteger, mapIntegerToPortName} from "../../../src/util/map/port.mjs"
-import assert from "assert"
 
 describe("util:map/port mapPortNameToInteger", () => {
-	test("should return an integer given an numeric port", () => {
-		assert.strictEqual(
-			mapPortNameToInteger("22"), 22
-		)
+	test("should return an integer given an numeric port", (expect) => {
+		expect(mapPortNameToInteger("22")).toBe(22)
 	})
 
-	test("should return an integer given a known port like 'telnet'", () => {
-		assert.strictEqual(
-			mapPortNameToInteger("telnet"), 23
-		)
+	test("should return an integer given a known port like 'telnet'", (expect) => {
+		expect(mapPortNameToInteger("telnet")).toBe(23)
 	})
 
-	test("should return an array given a known port like 'ftp'", () => {
-		assert.deepEqual(
-			mapPortNameToInteger("ftp"), [20,21]
-		)
+	test("should return an array given a known port like 'ftp'", (expect) => {
+		expect(mapPortNameToInteger("ftp")).toEqual([20,21])
 	})
 
-	test("should throw an error given an unknown port", () => {
-		assert.throws(() => {
+	test("should throw an error given an unknown port", (expect) => {
+		expect(() => {
 			mapPortNameToInteger("unknown")
-		}, {
-			message: "Unknown port 'unknown'."
-		})
+		}).toThrowError(`Unknown port 'unknown'.`)
 	})
 })
 
 describe("util:map/port mapIntegerToPortName", () => {
-	test("should return the correct name for a numeric port", () => {
-		assert.strictEqual(
-			mapIntegerToPortName(22), "ssh"
-		)
+	test("should return the correct name for a numeric port", (expect) => {
+		expect(mapIntegerToPortName(22)).toBe("ssh")
 	})
 
-	test("should return a string given an unknown numeric port", () => {
-		assert.strictEqual(
-			mapIntegerToPortName("2000"), "2000"
-		)
+	test("should return a string given an unknown numeric port", (expect) => {
+		expect(mapIntegerToPortName("2000")).toBe("2000")
 	})
 
-	test("should throw an error given an unknown port name", () => {
-		assert.throws(() => {
+	test("should throw an error given an unknown port name", (expect) => {
+		expect(() => {
 			mapIntegerToPortName("unknown")
-		}, {
-			message: "Unknown port 'unknown'."
-		})
+		}).toThrowError(`Unknown port 'unknown'.`)
 	})
 })
 
