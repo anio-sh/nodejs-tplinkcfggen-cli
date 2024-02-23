@@ -2,15 +2,15 @@ import {createTestSuite} from "@anio-jtest/test"
 const {test, describe, suite} = createTestSuite(import.meta.url)
 
 import normalizeCompressedFormat from "../../../src/acl/normalizeCompressedFormat.mjs"
-import assert from "assert"
 
 describe("acl:normalizeCompressedFormat: action", () => {
-	test("should return a new rule with the correct action value (1)", () => {
-		assert.deepEqual(
+	test("should return a new rule with the correct action value (1)", (expect) => {
+		expect(
 			normalizeCompressedFormat({
 				source: "src",
 				destination: "dst"
-			}),
+			})
+		).toEqual(
 			{
 				source: "src",
 				destination: "dst",
@@ -21,13 +21,14 @@ describe("acl:normalizeCompressedFormat: action", () => {
 		)
 	})
 
-	test("should return a new rule with the correct action value (2)", () => {
-		assert.deepEqual(
+	test("should return a new rule with the correct action value (2)", (expect) => {
+		expect(
 			normalizeCompressedFormat({
 				source: "src",
 				destination: "dst",
 				action: "permit"
-			}),
+			})
+		).toEqual(
 			{
 				source: "src",
 				destination: "dst",
@@ -38,13 +39,14 @@ describe("acl:normalizeCompressedFormat: action", () => {
 		)
 	})
 
-	test("should return the correct rule when 'permit' is specified", () => {
-		assert.deepEqual(
+	test("should return the correct rule when 'permit' is specified", (expect) => {
+		expect(
 			normalizeCompressedFormat({
 				source: "src",
 				destination: "dst",
 				permit: 1
-			}),
+			})
+		).toEqual(
 			{
 				source: "src",
 				destination: "dst",

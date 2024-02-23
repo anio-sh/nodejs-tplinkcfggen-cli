@@ -2,15 +2,15 @@ import {createTestSuite} from "@anio-jtest/test"
 const {test, describe, suite} = createTestSuite(import.meta.url)
 
 import normalizeCompressedFormat from "../../../src/acl/normalizeCompressedFormat.mjs"
-import assert from "assert"
 
 describe("acl:normalizeCompressedFormat: defaults", () => {
-	test("should return a new rule with the correct defaults", () => {
-		assert.deepEqual(
+	test("should return a new rule with the correct defaults", (expect) => {
+		expect(
 			normalizeCompressedFormat({
 				source: "src",
 				destination: "dst"
-			}),
+			})
+		).toEqual(
 			{
 				source: "src",
 				destination: "dst",

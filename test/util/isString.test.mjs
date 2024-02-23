@@ -2,15 +2,14 @@ import {createTestSuite} from "@anio-jtest/test"
 const {test, describe, suite} = createTestSuite(import.meta.url)
 
 import isString from "../../src/util/isString.mjs"
-import assert from "assert"
 
 describe("util:isString", function() {
-	test("should work as expected", () => {
-		assert.deepEqual(isString(""), true)
-		assert.deepEqual(isString("123"), true)
-		assert.deepEqual(isString(1), false)
-		assert.deepEqual(isString([]), false)
-		assert.deepEqual(isString({}), false)
+	test("should work as expected", (expect) => {
+		expect(isString("")).toBe(true)
+		expect(isString("123")).toBe(true)
+		expect(isString(1)).toBe(false)
+		expect(isString([])).toBe(false)
+		expect(isString({})).toBe(false)
 	})
 })
 

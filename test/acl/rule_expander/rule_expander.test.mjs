@@ -3,7 +3,6 @@ const {test, describe, suite} = createTestSuite(import.meta.url)
 
 import acl_test_cases from "./test_cases.mjs"
 import path from "path"
-import assert from "assert"
 import ruleExpander from "../../../src/acl/rule_expander/index.mjs"
 import {fileURLToPath} from "url"
 
@@ -22,19 +21,15 @@ for (const key in acl_test_cases) {
 	describe(`acl:${key}`, () => {
 		for (const test_case of acl_test.cases) {
 
-			test(test_case.label, () => {
+			test(test_case.label, (expect) => {
 				if ("output" in test_case) {
-					assert.deepEqual(
-						fn(test_case.input), test_case.output
-					)
+					expect(fn(test_case.input)).toEqual(test_case.output)
 				} else if ("throws" in test_case) {
-					assert.throws(() => {
+					expect(() => {
 						fn(test_case.input)
-					}, {
-						message: test_case.throws
-					})
+					}).toThrowError(test_case.throws)
 				} else {
-					assert.strictEqual(1, 1)
+					expect(1).toBe(1)
 				}
 			})
 		}
@@ -47,21 +42,20 @@ describe("acl:rule_expander: ruleExpander", () => {
 
 		for (const test_case of acl_test.cases) {
 
-			test(`cross check '${test_case.label}'`, () => {
+			test(`cross check '${test_case.label}'`, (expect) => {
 
 				if ("output" in test_case) {
-					assert.deepEqual(
-						ruleExpander(test_case.input),
+					expect(
+						ruleExpander(test_case.input)
+					).toEqual(
 						test_case.output
 					)
 				} else if ("throws" in test_case) {
-					assert.throws(() => {
+					expect(() => {
 						ruleExpander(test_case.input)
-					}, {
-						message: test_case.throws
-					})
+					}).toThrowError(test_case.throws)
 				} else {
-					assert.strictEqual(1, 1)
+					expect(1).toBe(1)
 				}
 
 			})

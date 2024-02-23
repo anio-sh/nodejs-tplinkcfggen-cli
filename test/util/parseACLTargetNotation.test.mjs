@@ -2,12 +2,12 @@ import {createTestSuite} from "@anio-jtest/test"
 const {test, describe, suite} = createTestSuite(import.meta.url)
 
 import parseACLTargetNotation from "../../src/util/parseACLTargetNotation.mjs"
-import assert from "assert"
 
 describe("util:parseACLTargetNotation", () => {
-	test("should return the correct values for '0.0.0.0'", () => {
-		assert.deepStrictEqual(
-			parseACLTargetNotation("0.0.0.0"),
+	test("should return the correct values for '0.0.0.0'", (expect) => {
+		expect(
+			parseACLTargetNotation("0.0.0.0")
+		).toEqual(
 			{
 				"ip": "0.0.0.0",
 				"subnet_mask": "255.255.255.255",
@@ -16,9 +16,10 @@ describe("util:parseACLTargetNotation", () => {
 		)
 	})
 
-	test("should return the correct values for '0.0.0.0:any'", () => {
-		assert.deepStrictEqual(
-			parseACLTargetNotation("0.0.0.0:any"),
+	test("should return the correct values for '0.0.0.0:any'", (expect) => {
+		expect(
+			parseACLTargetNotation("0.0.0.0:any")
+		).toEqual(
 			{
 				"ip": "0.0.0.0",
 				"subnet_mask": "255.255.255.255",
@@ -27,9 +28,10 @@ describe("util:parseACLTargetNotation", () => {
 		)
 	})
 
-	test("should return the correct values for '127.0.0.1/24'", () => {
-		assert.deepStrictEqual(
-			parseACLTargetNotation("127.0.0.1/24"),
+	test("should return the correct values for '127.0.0.1/24'", (expect) => {
+		expect(
+			parseACLTargetNotation("127.0.0.1/24")
+		).toEqual(
 			{
 				"ip": "127.0.0.1",
 				"subnet_mask": "255.255.255.0",
@@ -38,9 +40,10 @@ describe("util:parseACLTargetNotation", () => {
 		)
 	})
 
-	test("should return the correct values for '127.0.0.1/24:ftp'", () => {
-		assert.deepStrictEqual(
-			parseACLTargetNotation("127.0.0.1/24:ftp"),
+	test("should return the correct values for '127.0.0.1/24:ftp'", (expect) => {
+		expect(
+			parseACLTargetNotation("127.0.0.1/24:ftp")
+		).toEqual(
 			{
 				"ip": "127.0.0.1",
 				"subnet_mask": "255.255.255.0",
@@ -49,9 +52,10 @@ describe("util:parseACLTargetNotation", () => {
 		)
 	})
 
-	test("should return the correct values for '127.0.0.1/24:22'", () => {
-		assert.deepStrictEqual(
-			parseACLTargetNotation("127.0.0.1/24:22"),
+	test("should return the correct values for '127.0.0.1/24:22'", (expect) => {
+		expect(
+			parseACLTargetNotation("127.0.0.1/24:22")
+		).toEqual(
 			{
 				"ip": "127.0.0.1",
 				"subnet_mask": "255.255.255.0",
@@ -60,9 +64,10 @@ describe("util:parseACLTargetNotation", () => {
 		)
 	})
 
-	test("should return the correct values for '127.0.0.1/24:ssh,http'", () => {
-		assert.deepStrictEqual(
-			parseACLTargetNotation("127.0.0.1/24:ssh,http"),
+	test("should return the correct values for '127.0.0.1/24:ssh,http'", (expect) => {
+		expect(
+			parseACLTargetNotation("127.0.0.1/24:ssh,http")
+		).toEqual(
 			{
 				"ip": "127.0.0.1",
 				"subnet_mask": "255.255.255.0",
@@ -73,9 +78,10 @@ describe("util:parseACLTargetNotation", () => {
 })
 
 describe("parseACLTargetNotation any test cases", () => {
-	test("should return the correct values for 'any'", () => {
-		assert.deepStrictEqual(
-			parseACLTargetNotation("any"),
+	test("should return the correct values for 'any'", (expect) => {
+		expect(
+			parseACLTargetNotation("any")
+		).toEqual(
 			{
 				"ip": "0.0.0.0",
 				"subnet_mask": "0.0.0.0",
@@ -84,9 +90,10 @@ describe("parseACLTargetNotation any test cases", () => {
 		)
 	})
 
-	test("should return the correct values for 'any:any'", () => {
-		assert.deepStrictEqual(
-			parseACLTargetNotation("any:any"),
+	test("should return the correct values for 'any:any'", (expect) => {
+		expect(
+			parseACLTargetNotation("any:any")
+		).toEqual(
 			{
 				"ip": "0.0.0.0",
 				"subnet_mask": "0.0.0.0",
@@ -95,9 +102,10 @@ describe("parseACLTargetNotation any test cases", () => {
 		)
 	})
 
-	test("should return the correct values for 'any:ssh'", () => {
-		assert.deepStrictEqual(
-			parseACLTargetNotation("any:ssh"),
+	test("should return the correct values for 'any:ssh'", (expect) => {
+		expect(
+			parseACLTargetNotation("any:ssh")
+		).toEqual(
 			{
 				"ip": "0.0.0.0",
 				"subnet_mask": "0.0.0.0",
@@ -106,9 +114,10 @@ describe("parseACLTargetNotation any test cases", () => {
 		)
 	})
 
-	test("should return the correct values for 'any:ssh,http'", () => {
-		assert.deepStrictEqual(
-			parseACLTargetNotation("any:ssh,http"),
+	test("should return the correct values for 'any:ssh,http'", (expect) => {
+		expect(
+			parseACLTargetNotation("any:ssh,http")
+		).toEqual(
 			{
 				"ip": "0.0.0.0",
 				"subnet_mask": "0.0.0.0",
@@ -117,28 +126,22 @@ describe("parseACLTargetNotation any test cases", () => {
 		)
 	})
 
-	test("should throw an error if 'any' is specified with a subnet mask (1)", () => {
-		assert.throws(() => {
+	test("should throw an error if 'any' is specified with a subnet mask (1)", (expect) => {
+		expect(() => {
 			parseACLTargetNotation("any/32")
-		}, {
-			message: "Cannot specify subnet mask for 'any' ip address."
-		})
+		}).toThrowError(`Cannot specify subnet mask for 'any' ip address.`)
 	})
 
-	test("should throw an error if 'any' is specified with a subnet mask (2)", () => {
-		assert.throws(() => {
+	test("should throw an error if 'any' is specified with a subnet mask (2)", (expect) => {
+		expect(() => {
 			parseACLTargetNotation("any/32:any")
-		}, {
-			message: "Cannot specify subnet mask for 'any' ip address."
-		})
+		}).toThrowError(`Cannot specify subnet mask for 'any' ip address.`)
 	})
 
-	test("should throw an error if 'any' is specified with a subnet mask (3)", () => {
-		assert.throws(() => {
+	test("should throw an error if 'any' is specified with a subnet mask (3)", (expect) => {
+		expect(() => {
 			parseACLTargetNotation("any/32:ssh")
-		}, {
-			message: "Cannot specify subnet mask for 'any' ip address."
-		})
+		}).toThrowError(`Cannot specify subnet mask for 'any' ip address.`)
 	})
 })
 

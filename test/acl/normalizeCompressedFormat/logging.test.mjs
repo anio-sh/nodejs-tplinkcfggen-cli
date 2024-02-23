@@ -2,15 +2,15 @@ import {createTestSuite} from "@anio-jtest/test"
 const {test, describe, suite} = createTestSuite(import.meta.url)
 
 import normalizeCompressedFormat from "../../../src/acl/normalizeCompressedFormat.mjs"
-import assert from "assert"
 
 describe("acl:normalizeCompressedFormat: logging", () => {
-	test("should return a new rule with the correct logging value (1)", () => {
-		assert.deepEqual(
+	test("should return a new rule with the correct logging value (1)", (expect) => {
+		expect(
 			normalizeCompressedFormat({
 				source: "src",
 				destination: "dst"
-			}),
+			})
+		).toEqual(
 			{
 				source: "src",
 				destination: "dst",
@@ -21,13 +21,14 @@ describe("acl:normalizeCompressedFormat: logging", () => {
 		)
 	})
 
-	test("should return a new rule with the correct logging value (2)", () => {
-		assert.deepEqual(
+	test("should return a new rule with the correct logging value (2)", (expect) => {
+		expect(
 			normalizeCompressedFormat({
 				source: "src",
 				destination: "dst",
 				logging: true
-			}),
+			})
+		).toEqual(
 			{
 				source: "src",
 				destination: "dst",
@@ -38,13 +39,14 @@ describe("acl:normalizeCompressedFormat: logging", () => {
 		)
 	})
 
-	test("should return the correct rule when 'enable_log' is specified", () => {
-		assert.deepEqual(
+	test("should return the correct rule when 'enable_log' is specified", (expect) => {
+		expect(
 			normalizeCompressedFormat({
 				source: "src",
 				destination: "dst",
 				enable_log: 1
-			}),
+			})
+		).toEqual(
 			{
 				source: "src",
 				destination: "dst",
