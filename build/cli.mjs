@@ -8,8 +8,8 @@ await (async () => {
 		return
 	}
 
-	process.stderr.write(`Created with anio-gyp version v0.12.0 and with @anio-gyp/utilities v0.12.2.\n\n`)
-	process.stderr.write(`Bundle id is 98ca112d01d15b647a0555bd5ddf19635b26f56f.\n`)
+	process.stderr.write(`Created with anio-gyp version v0.13.0 and with @anio-gyp/utilities v0.12.2.\n\n`)
+	process.stderr.write(`Bundle id is 78eca8b3b52334bbe79fe0cc05e0465707446d8e.\n`)
 
 	process.stderr.write(`\n`)
 
@@ -21,84 +21,8 @@ await (async () => {
 #!/usr/bin/env -S node --experimental-detect-module
 import fs$1 from 'node:fs';
 import fs from 'node:fs/promises';
+import { UInt32ToIPv4String, IPv4StringToUInt32, parseIPv4String } from '@anio-core-sh/js-utils';
 import process from 'node:process';
-
-/**
- * Converts IPv4 string format `a.b.c.d` into uint32.
- */
-function IPv4StringToUInt32$2(ip_str) {
-	const octets = ip_str.split(".");
-	let num = 0;
-
-	for (let i = 0; i < 4; ++i) {
-		const octet = parseInt(octets[i], 10);
-		const n_shift = (3 - i) * 8;
-
-		num |= (octet << n_shift);
-	}
-
-	return num >>> 0
-}
-
-/**
- * Converts 32bit integer `num` to IPv4 string format `a.b.c.d`
- */
-function UInt32ToIPv4String$1(num) {
-	const binary_string = (num >>> 0).toString(2).padStart(32, "0");
-	let octets = [];
-
-	for (let i = 0; i < 4; ++i) {
-		const octet_slice = binary_string.slice(8 * i, 8 * (i + 1));
-		const octet = parseInt(octet_slice, 2);
-
-		octets.push(octet);
-	}
-
-	return octets.join(".")
-}
-
-function createSubnetMask$1(n) {
-	n = parseInt(n, 10);
-
-	const ones = "1".repeat(n);
-	const zeros = "0".repeat(32 - n);
-
-	return parseInt(`${ones}${zeros}`, 2) >>> 0
-}
-
-function invertSubnetMask(n) {
-	return (n ^ 0xFFFFFFFF) >>> 0
-}
-
-function mask(ip, mask) {
-	return (ip & mask) >>> 0
-}
-
-function parseIPv4String$1(ip_str) {
-	const tmp = ip_str.split("/");
-
-	if (tmp.length > 2) {
-		throw new Error(`Invalid IPv4 string '${ip_str}'.`)
-	} else if (tmp.length === 1) {
-		return parseIPv4String$1(`${ip_str}/32`)
-	}
-
-	const submask = createSubnetMask$1(tmp[1]);
-	const host = mask(
-		IPv4StringToUInt32(tmp[0]), invertSubnetMask(submask)
-	);
-	const network = mask(
-		IPv4StringToUInt32(tmp[0]), submask
-	);
-
-	return {network, host, submask}
-}
-
-/* Warning! This file was automatically created! */
-
-const IPv4StringToUInt32$1 = IPv4StringToUInt32$2;
-const UInt32ToIPv4String = UInt32ToIPv4String$1;
-const parseIPv4String = parseIPv4String$1;
 
 let saved_global_context = {};
 
@@ -127,7 +51,7 @@ async function loadConfigFile(config_file_path) {
 		any: "any",
 
 		UInt32ToIPv4String,
-		IPv4StringToUInt32: IPv4StringToUInt32$1,
+		IPv4StringToUInt32,
 		parseIPv4String
 	};
 
