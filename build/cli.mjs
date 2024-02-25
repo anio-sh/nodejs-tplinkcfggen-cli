@@ -8,8 +8,8 @@ await (async () => {
 		return
 	}
 
-	process.stderr.write(`Created with anio-gyp version v0.11.0 and with @anio-gyp/utilities v0.12.2.\n\n`)
-	process.stderr.write(`Bundle id is daf6bda560ee19fbce1cfa5a9bfd75b1d9f5eb40.\n`)
+	process.stderr.write(`Created with anio-gyp version v0.12.0 and with @anio-gyp/utilities v0.12.2.\n\n`)
+	process.stderr.write(`Bundle id is 98ca112d01d15b647a0555bd5ddf19635b26f56f.\n`)
 
 	process.stderr.write(`\n`)
 
