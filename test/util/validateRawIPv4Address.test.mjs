@@ -1,4 +1,4 @@
-import {createTestSuite} from "@anio-jtest/test"
+import {createTestSuite} from "anio-jtest/suite"
 const {test, describe, suite} = createTestSuite(import.meta.url)
 
 import validateRawIPv4Address from "../../src/util/validateRawIPv4Address.mjs"

@@ -1,4 +1,4 @@
-import {createTestSuite} from "@anio-jtest/test"
+import {createTestSuite} from "anio-jtest/suite"
 const {test, describe, suite} = createTestSuite(import.meta.url)
 
 import acl_test_cases from "./test_cases.mjs"
